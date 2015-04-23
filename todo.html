@@ -2,15 +2,29 @@
 <head>
 	<title>Moises' 2nd todo list</title>
 	<link rel="stylesheet" type="text/css" href="main.css">
-	<link rel="stylesheet" type="text/css" href="reset.css">
-	<link rel="stylesheet" type="text/css" href="normalize.css">
 
 </head>
 <body>
 <div class="wrap">
-<div>
+<div class="task-list">
 	<ul>
-	<?php require("includes/connect.php"); ?>
+	<?php require("includes/connect.php"); 
+	$mysqli = new mysqli('localhost', 'root','root','todo2');
+	$query = "SELECT * FROM tasks ORDER BY date ASC, time ASC";
+	if($result = $mysqli->query($query)){
+		$numrows = $result->numrows;
+		if($numrows>0){
+			while($row = $result->fetch_assoc()){
+				$task_id = $row['id'];
+				$task_name = $row["task"];
+
+			echo "<li>
+			<span>'.$task_name'
+			";
+		}
+	}
+}
+	?>
 	</ul>
 </div>
 <form class="add-new-task" autocomplete="off"><input type="text" name="new-task" placeholder="Add new item..."/></form>
