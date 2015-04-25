@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Moises' 2nd todo list</title>
-	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 
 	</head>
 	<body>
@@ -20,7 +20,7 @@
 
 				echo '<li>
 				<span>'.$task_name.'</span>
-				<img id='.$task_id." class="delete-button" width="10px" src="images/close.svg'/>
+				<img id="'.$task_id.'" class="delete-button" width="10px" src="images/close.svg"/>
 				</li>';
 			}
 		}
@@ -29,6 +29,13 @@
 	</ul>
 		</div>
 			<form class="add-new-task" autocomplete="off"><input type="text" 	name="new-task" placeholder="Add new item..."/></form>
+	</div>
+	<div class="reg">
+		<?php
+			require_once(__DIR__ . "/view/register-form.php");
+			require_once(__DIR__ . "/view/login-form.php");
+			require_once(__DIR__ . "/controller/login-verify.php");
+		?>
 	</div>
 </body>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
