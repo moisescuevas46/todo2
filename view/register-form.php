@@ -5,8 +5,8 @@
 
 <h1>Register</h1>
 
-<form method="post" action="<?php echo $path . "controller/create-user.php";?>">
-	<div>
+<form method="post" action="<?php echo $path . "controller/create-user.php"; ?>">
+	<div class="">
 		<label for="email">Email:</label>
 		<input type="text" name="email" />
 	</div>

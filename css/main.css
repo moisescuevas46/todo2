@@ -12,6 +12,7 @@ body{
 .wrap{
 	width: 400px;
 	margin: 0 auto;
+	padding-right:850px; 
 }
 .task-list{
 	width: 88%;
@@ -22,9 +23,7 @@ body{
 	padding: 22px 6%;
 }
 .reg{
-	width: 200px;
+	width: 400px;
 	margin: 0 auto;
-	min-height: 200px;
-	background: grey;
-	
+	background: #61563C;
 }

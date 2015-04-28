@@ -12,7 +12,7 @@
 			$mysqli = new mysqli('localhost', 'root','root','todo2');
 		$query = "SELECT * FROM tasks ORDER BY date ASC, time ASC";
 			if($result = $mysqli->query($query)){
-			$numrows = $result->numrows;
+			$numrows = $result->num_rows;
 			if($numrows>0){
 				while($row = $result->fetch_assoc()){
 					$task_id = $row['id'];
@@ -28,7 +28,7 @@
 	?>
 	</ul>
 		</div>
-			<form class="add-new-task" autocomplete="off"><input type="text" 	name="new-task" placeholder="Add new item..."/></form>
+			<form class="add-new-task" autocomplete="off"><input type="text" name="new-task" placeholder="Add new item..."/></form>
 	</div>
 	<div class="reg">
 		<?php
@@ -37,24 +37,26 @@
 			require_once(__DIR__ . "/controller/login-verify.php");
 		?>
 	</div>
+
 </body>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
-	add_task();//caling the add task function
+	add_task();  
+
 		function add_task(){
-			$('.add-new-task').submit(function(){
-				var new_task = $('.add-new-task input[new=new-task').val();
-	
-		if(new_task != ''){
-			$.post('includes/add-task.php', {task: new_task}, function(data){
-				$('add-new-task input[name=new-task]').val();
-				$(data).appendTO('.task-list ul').hide().fadeIn();
+			$('.add-new-task').submit(function() {
+				var new_task = $('.add-new-task input[name=new-task]').val();
+
+				if (new_task != ''){
+					$.post('includes/add-task.php', {task: new_task}, function(data) {
+						$('.add-new-task input[name=new-task]').val();
+							$(data).appendTo('.task-list ul').hide().fadeIn();
+					});
+				}
+				return false;
 			});
 		}
-		return false;
-	});
-}
-
 $('.delete-button').click(function(){
 	var current_element = $(this);
 	var task_id = $(this).attr('id');
